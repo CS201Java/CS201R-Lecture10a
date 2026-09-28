@@ -2,7 +2,7 @@ public class Pet {
     private String name;
     private String type;
 
-    public Item(String name, String type) {
+    public Pet(String name, String type) {
         this.name = name;
         this.type = type;
     }
