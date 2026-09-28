@@ -1,6 +1,6 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.*;
 
 public class Main {
 
@@ -10,44 +10,46 @@ public class Main {
         //define file values
         ArrayList<Person> people = new ArrayList<>();
         
-        //CREATE A STUDENT OBJECT USING OVERLOADED CONSTRUCTOR
-        Student s1 = new Student('S', "Mahomes","Patrick", 29, 3.5);
-        System.out.println(s1);
+        //EXAMPLE 1:  CREATE A STUDENT OBJECT USING OVERLOADED CONSTRUCTOR
+        Student s1 = new Student('S', "Patrick","Mahomes", 29, 3.5);
 
-        //CREATE A STUDENT OBJECT USING DEFAULT CONSTRUCTOR
+        //EXAMPLE 1:  CREATE A STUDENT OBJECT USING DEFAULT CONSTRUCTOR
         Student s2 = new Student();
         s2.setType('S');
         s2.setLName("Kelce");
         s2.setFName("Travis");
         s2.setAge(35);
         s2.setGPA(3.4);
-        System.out.println(s2);
-        Person px = new Person("Bubba", "Wubba",15);
-        //PRINT OBJECTS 
+
+        //EXAMPLE 1:  PRINT OBJECTS 
          System.out.print(s1);
          System.out.print(s2);
 
         people.add(s1);
         people.add(s2);
-        people.add(px);
 
         for (Person p : people){
             System.out.print(p);
         }
 
+        //EXAMPLE 2A: POLYMORPHISM: APPLE CLASS
         //testing Apple class
-        System.out.println("\n\nTESTING APPLE CLASS");
+        System.out.println("\n\nEXAMPLE 2:  TESTING APPLE CLASS");
+        System.out.println("\tEXAMPLE2a: ");
         Apple a = new Apple();
-        System.out.println(a + "\n");
+        System.out.println("\t" + a + "\n");
         
+        System.out.println("\tEXAMPLE2b: ");
         GoldenDelicious b = new GoldenDelicious(7);
-        System.out.println(b + "\n");
+        System.out.println("\t" + b + "\n");
 
+        System.out.println("\tEXAMPLE2c: ");
         Apple c = new GoldenDelicious(8);
-        System.out.println(c + "\n");
+        System.out.println("\t" +c + "\n");
 
+        System.out.println("\tEXAMPLE2d: ");
         Apple d = new GoldenDelicious();
-        System.out.println(d + "\n");
+        System.out.println("\t" + d + "\n");
  
         try {
             File inFile = new File("people.txt");
@@ -75,6 +77,26 @@ public class Main {
             for (Person p : people){
                 if (p instanceof Student)
                     System.out.print(p);
+            }
+
+            //deep vs shallow copy
+            ArrayList<Person> people2 = people;
+            System.out.println("\nEXAMPLE 4A: SHALLOW (SAME REFERENCE) COPY");
+            System.out.println("CHANGES MADE TO PEOPLE2 AFFECTS PEOPLE");
+            people2.get(1).setLName("Grasshopper");
+
+            for (Person p : people){
+                    System.out.print(p);
+            }
+
+
+            System.out.println("\nEXAMPLE 4B: SHALLOW COPY OF OBJECTS");
+            System.out.println("CHANGES MADE TO PEOPLE3 OJBECT AFFECTS PEOPLE OBJECT");
+            ArrayList<Person> people3 = new ArrayList<>(people);
+            people3.get(2).setLName("MooMooCows");
+
+            for (Person p : people){
+                System.out.print(p);
             }
             scanner.close();
         }

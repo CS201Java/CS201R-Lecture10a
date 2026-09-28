@@ -1,8 +1,8 @@
 public class Person {
-    protected    char type;
-    protected    String fname;
-    protected    String lname;
-    protected    int age;
+    private  char type;
+    private   String fname;
+    private   String lname;
+    private  int age;
 
     Person(){
         this("","",0); 
